@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "Run current file",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "justMyCode": true
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "Pytest: file",
+            "module": "pytest",
+            "args": [
+                "-q",
+                "${file}"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "justMyCode": false
+        },
+        {
+            "type": "python",
+            "request": "launch",
+            "name": "FastAPI Dev (fastapi dev)",
+            "module": "fastapi",
+            "args": [
+                "dev",
+                "src/converter_api/main.py",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                "8000"
+            ],
+            "cwd": "${workspaceFolder}/backend",
+            "console": "internalConsole",
+            "subProcess": true,
+            "justMyCode": true,
+            "env": {
+                "PYTHONUNBUFFERED": "1",
+                "PYTHONPATH": "${workspaceFolder}/backend/src"
+            }
+        }
+    ]
+}

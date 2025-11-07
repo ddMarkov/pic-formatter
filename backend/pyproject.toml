@@ -1,0 +1,22 @@
+[project]
+name = "pic-formatter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "debugpy>=1.8.17",
+    "fastapi[standard]>=0.119.1",
+    "pillow>=12.0.0",
+    "pillow-heif>=1.1.1",
+    "python-multipart>=0.0.20",
+    "ruff>=0.14.2",
+]
+
+[tool.basedpyright]
+reportMissingTypeStubs = "none"
+reportAny = "none"
+reportUnknownMemberType = "none"
+reportUnknownParameterType = "none"
+reportUnknownArgumentType = "none"
+reportUnknownVariableType = "none"
