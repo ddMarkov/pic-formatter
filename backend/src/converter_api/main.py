@@ -11,7 +11,7 @@ TargetFmt = Literal["png", "jpeg", "webp", "tiff", "pdf"]
 
 @app.get("/")
 def read_root():
-    pass
+    return {"msg": "Hello World"}
 
 
 @app.post("/convert")
