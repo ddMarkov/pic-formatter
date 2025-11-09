@@ -11,12 +11,11 @@ Built from scratch to understand *how modern web systems actually work*
 - The backend decodes the HEIC file using `pillow-heif` and re-encodes it into PNG format.  
 - The converted image streams back to the browser as a downloadable file.  
 
-That’s it — fast, clean, and educational.  
 ---
 
 ## Why I’m Building This
 
-This isn’t about building a converter app — it’s my **sandbox for learning**.  
+This is my sandbox for learning web app concepts. I can freely brake things and learn through trial and error.
 Every part of this project exists to teach me a core engineering concept:
 
 | Goal | What I’m learning |
