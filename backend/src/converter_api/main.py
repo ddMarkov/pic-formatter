@@ -1,12 +1,15 @@
-from typing import Literal
-
 import pillow_heif
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, File, HTTPException, Response, UploadFile
+
+from services.convert import (
+    ImageIsNotHEIFError,
+    InvalidImageError,
+    convert_heic_to_png,
+    load_image,
+)
 
 app = FastAPI()
 pillow_heif.register_heif_opener()
-
-TargetFmt = Literal["png", "jpeg", "webp", "tiff", "pdf"]
 
 
 @app.get("/")
@@ -15,6 +18,13 @@ def read_root():
 
 
 @app.post("/convert")
-def convert_img(files: list[UploadFile], target_format: str):
-    if len(files) == 1:
-        pass
+async def convert_img(file: UploadFile = File(...)):
+    content = await file.read()
+    try:
+        img_in_bytes = load_image(content)
+    except ImageIsNotHEIFError:
+        raise HTTPException(status_code=400)
+    except InvalidImageError:
+        raise HTTPException(status_code=400)
+    png_bytes = convert_heic_to_png(img_in_bytes)
+    return Response(content=png_bytes, media_type="image/png")
