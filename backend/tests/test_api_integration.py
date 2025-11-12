@@ -59,4 +59,4 @@ def test_convert_invalid_bytes_rejected():
     )
 
     assert resp.status_code == 400
-    assert "invalid image" in resp.text.lower()
+    assert "corrupted" and "image" in resp.text.lower()

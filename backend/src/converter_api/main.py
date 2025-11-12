@@ -23,8 +23,8 @@ async def convert_img(file: UploadFile = File(...)):
     try:
         img_in_bytes = load_image(content)
     except ImageIsNotHEIFError:
-        raise HTTPException(status_code=400)
+        raise HTTPException(status_code=400, detail="not heif")
     except InvalidImageError:
-        raise HTTPException(status_code=400)
+        raise HTTPException(status_code=400, detail="The uploaded Image is corrupted")
     png_bytes = convert_heic_to_png(img_in_bytes)
     return Response(content=png_bytes, media_type="image/png")
